@@ -6,8 +6,6 @@ import Axios from 'axios';
 // Read the .env file.
 import * as dotenv from "dotenv";
 dotenv.config();
-
-
 import cors from '@fastify/cors'
 
 import Fastify from "fastify";
@@ -17,11 +15,34 @@ const fastify = Fastify({
 
 await fastify.register(cors, { 
   // put your options here
-  origin:['http://localhost:8050']
+  origin:[`${process.env.VanillaJS_PMAQI}`]
   //origin:'*'
+});
+
+// rate-limit 流量限制
+await fastify.register(import('@fastify/rate-limit'), {
+  //global : false,          // default true
+  max: 10,                 // default 1000
+  timeWindow: '1 minute',// default 1000 * 60
+  allowList:[`${process.env.VanillaJS_PMAQI}`],
+  errorResponseBuilder: function (request, context) {
+    return {
+      code: 429,
+      error: 'Too Many Requests',
+      message: `I only allow ${context.max} requests per ${context.after} to this Website. Try again soon.`,
+      date: Date.now(),
+      expiresIn: context.ttl // milliseconds
+    }
+  }
+});
+
+fastify.setErrorHandler(function (error, request, reply) {
+  if (error.statusCode === 429) {
+    reply.code(429)
+    error.message = 'You hit the rate limit! Slow down please!'
+  }
+  reply.send(error)
 })
-
-
 
 // Declare a route
 fastify.get("/api/aqi", async function (request, reply) {

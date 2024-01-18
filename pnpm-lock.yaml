@@ -2,12 +2,14 @@ lockfileVersion: 5.3
 
 specifiers:
   '@fastify/cors': ^8.5.0
+  '@fastify/rate-limit': ^9.1.0
   axios: ^1.6.5
   dotenv: ^16.3.1
   fastify: ^4.25.2
 
 dependencies:
   '@fastify/cors': 8.5.0
+  '@fastify/rate-limit': 9.1.0
   axios: 1.6.5
   fastify: 4.25.2
 
@@ -43,6 +45,19 @@ packages:
     resolution: {integrity: sha512-aZAXGYo6m22Fk1zZzEUKBvut/CIIQe/BapEORnxiD5Qr0kPHqqI69NtEMCme74h+at72sPhbkb4ZrLd1W3KRLA==}
     dependencies:
       fast-json-stringify: 5.9.2
+    dev: false
+
+  /@fastify/rate-limit/9.1.0:
+    resolution: {integrity: sha512-h5dZWCkuZXN0PxwqaFQLxeln8/LNwQwH9popywmDCFdKfgpi4b/HoMH1lluy6P+30CG9yzzpSpwTCIPNB9T1JA==}
+    dependencies:
+      '@lukeed/ms': 2.0.2
+      fastify-plugin: 4.5.1
+      toad-cache: 3.4.1
+    dev: false
+
+  /@lukeed/ms/2.0.2:
+    resolution: {integrity: sha512-9I2Zn6+NJLfaGoz9jN3lpwDgAYvfGeNYdbAIjJOqzs4Tpc+VU3Jqq4IofSUBKajiDS8k9fZIg18/z13mpk1bsA==}
+    engines: {node: '>=8'}
     dev: false
 
   /abort-controller/3.0.0:
