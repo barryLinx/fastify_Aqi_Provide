@@ -78,6 +78,8 @@ fastify.listen({ port: 8080 }, function (err, address) {
   //Server is now listening on ${address}
 });
 
+// Register your application as a normal plugin.
+fastify.register(import("../src/api.js"));
 
 export default async (req, res) => {
   await fastify.ready();

@@ -1,4 +1,4 @@
 node_modules
 test.http
 .env
-vercel.json
+#vercel.json
