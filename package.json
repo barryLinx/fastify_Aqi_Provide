@@ -5,7 +5,7 @@
   "type": "module",
   "main": "api.js",
   "scripts": {
-    "start":"node ./src/api.js",
+    "start": "fastify start ./src/api.js",
     "dev": "nodemon src/api.js",
     "pmdev": "pm2 start src/api.js --watch"
   },
@@ -16,7 +16,8 @@
     "@fastify/cors": "^8.5.0",
     "@fastify/rate-limit": "^9.1.0",
     "axios": "^1.6.5",
-    "fastify": "^4.25.2"
+    "fastify": "^4.25.2",
+    "fastify-cli": "^6.0.1"
   },
   "devDependencies": {
     "dotenv": "^16.3.1"
