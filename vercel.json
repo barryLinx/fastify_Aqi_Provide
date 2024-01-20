@@ -1,10 +1,15 @@
-
 {
-  "rewrites": [
-      {
-          "source": "./src",
-          "destination": "./src/api.js"
-      }
+  "version":2,
+  "builid":[
+    {
+      "src":"src/api.js",
+      "use":"@vercel/node"
+    }
+  ],
+  "route":[
+    {
+      "src":"(.*)",
+      "dest":"src/api.js"
+    }
   ]
 }
-
