@@ -48,7 +48,14 @@ fastify.setErrorHandler(function (error, request, reply) {
 })
 
 
+
+
 // Declare a route
+
+fastify.get("/",async function(req,reply){
+  return { hello: 'world' }
+});
+
 fastify.get("/api/aqi", async function (request, reply) {
   const aqiURL=`${process.env.URL}${process.env.API_KEY}`;
   try{
