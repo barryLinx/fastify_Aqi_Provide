@@ -13,12 +13,12 @@ const fastify = Fastify({
   logger: true,
 });
 
-const cors_Orgin = process.env.VanillaJS_PMAQI || 'http://localhost:8050';
+//const cors_Orgin = process.env.VanillaJS_PMAQI || 'http://localhost:8050';
 
 await fastify.register(cors, { 
   // put your options here
-  origin:[cors_Orgin]
-  //origin:'*'
+  //origin:[cors_Orgin]
+   origin:'*'
 });
 
 fastify.register(
@@ -32,7 +32,7 @@ await fastify.register(import('@fastify/rate-limit'), {
   //global : false,          // default true
   max: 3,                 // default 1000
   timeWindow: '1 minute',// default 1000 * 60
-  allowList:[cors_Orgin],
+  //allowList:[cors_Orgin],
   errorResponseBuilder: function (request, context) {
     return {
       code: 429,
