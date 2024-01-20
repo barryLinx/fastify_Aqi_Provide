@@ -1,15 +1,10 @@
+
 {
-  "version":2,
-  "builid":[
-    {
-      "src":"src/api.js",
-      "use":"@vercel/node"
-    }
-  ],
-  "route":[
-    {
-      "src":"(.*)",
-      "dest":"src/api.js"
-    }
+  "rewrites": [
+      {
+          "source": "/(.*)",
+          "destination": "/src/api.js"
+      }
   ]
 }
+

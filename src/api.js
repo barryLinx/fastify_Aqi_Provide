@@ -80,3 +80,20 @@ export default async (req, res) => {
   await fastify.ready();
   fastify.server.emit('request', req, res);
 }
+
+
+// {
+//   "version":2,
+//   "builid":[
+//     {
+//       "src":"src/api.js",
+//       "use":"@vercel/node"
+//     }
+//   ],
+//   "route":[
+//     {
+//       "src":"(.*)",
+//       "dest":"src/api.js"
+//     }
+//   ]
+// }
