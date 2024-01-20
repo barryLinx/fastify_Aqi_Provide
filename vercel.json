@@ -1,8 +1,10 @@
 
 {
- "version":2,
- "builds":[{
-  "src":"./src/api.js","use":"@now/node-server"
- }]
+  "rewrites": [
+      {
+          "source": "./src",
+          "destination": "/api.js"
+      }
+  ]
 }
 
