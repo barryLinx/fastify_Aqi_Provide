@@ -21,11 +21,6 @@ await fastify.register(cors, {
    origin:'*'
 });
 
-fastify.register(
-  fastifyCaching,
-  {privacy: fastifyCaching.privacy.NOCACHE},
-  (err) => { if (err) throw err }
-)
 
 // rate-limit 流量限制
 await fastify.register(import('@fastify/rate-limit'), {
