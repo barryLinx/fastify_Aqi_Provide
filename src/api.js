@@ -6,25 +6,33 @@ import Axios from 'axios';
 // Read the .env file.
 import * as dotenv from "dotenv";
 dotenv.config();
-import cors from '@fastify/cors'
+import cors from '@fastify/cors';
 
 import Fastify from "fastify";
 const fastify = Fastify({
   logger: true,
 });
 
+const cors_Orgin = process.env.VanillaJS_PMAQI || 'http://localhost:8050';
+
 await fastify.register(cors, { 
   // put your options here
-  origin:[`${process.env.VanillaJS_PMAQI}`]
+  origin:[cors_Orgin]
   //origin:'*'
 });
+
+fastify.register(
+  fastifyCaching,
+  {privacy: fastifyCaching.privacy.NOCACHE},
+  (err) => { if (err) throw err }
+)
 
 // rate-limit 流量限制
 await fastify.register(import('@fastify/rate-limit'), {
   //global : false,          // default true
-  max: 10,                 // default 1000
+  max: 3,                 // default 1000
   timeWindow: '1 minute',// default 1000 * 60
-  allowList:[`${process.env.VanillaJS_PMAQI}`],
+  allowList:[cors_Orgin],
   errorResponseBuilder: function (request, context) {
     return {
       code: 429,
@@ -43,6 +51,7 @@ fastify.setErrorHandler(function (error, request, reply) {
   }
   reply.send(error)
 })
+
 
 // Declare a route
 fastify.get("/api/aqi", async function (request, reply) {
@@ -68,3 +77,9 @@ fastify.listen({ port: 8080 }, function (err, address) {
   }
   //Server is now listening on ${address}
 });
+
+
+export default async (req, res) => {
+  await fastify.ready();
+  fastify.server.emit('request', req, res);
+}

@@ -5,6 +5,7 @@
   "type": "module",
   "main": "api.js",
   "scripts": {
+    "start":"node src/api.js",
     "dev": "nodemon src/api.js",
     "pmdev": "pm2 start src/api.js --watch"
   },
