@@ -48,8 +48,6 @@ fastify.setErrorHandler(function (error, request, reply) {
 })
 
 
-
-
 // Declare a route
 
 fastify.get("/",async function(req,reply){
@@ -80,27 +78,5 @@ fastify.listen({ port: 8080 }, function (err, address) {
   //Server is now listening on ${address}
 });
 
-// Register your application as a normal plugin.
-fastify.register(import("../src/api.js"));
-
-export default async (req, res) => {
-  await fastify.ready();
-  fastify.server.emit('request', req, res);
-}
 
 
-// {
-//   "version":2,
-//   "builid":[
-//     {
-//       "src":"src/api.js",
-//       "use":"@vercel/node"
-//     }
-//   ],
-//   "route":[
-//     {
-//       "src":"(.*)",
-//       "dest":"src/api.js"
-//     }
-//   ]
-// }
