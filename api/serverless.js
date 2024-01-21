@@ -52,14 +52,42 @@ app.setErrorHandler(function (error, request, reply) {
 
 /* Register  your application as a normal plugin.*/
 //fastify.register(import("../api/serverless.js"));
-import routes from '../api/serverless.js';
-app.register(routes);
+// import routes from '../api/serverless.js';
+// app.register(routes);
 
 
-// Run the server!
-// fastify.listen({ port: 8080 }, function (err, address) {
+import Axios from 'axios';
+
+
+// Declare a route
+
+app.get("/",async function(req,reply){
+  return { hello: 'world' }
+});
+
+app.get("/api/aqi", async function (request, reply) {
+  const aqiURL=`${process.env.URL}${process.env.API_KEY}`;
+  try{
+    let response  = await Axios.get(aqiURL);
+    //let response  = await fetch('https://data.moenv.gov.tw/api/v2/aqx_p_432?api_key=4684ccb2-ffa1-4d65-b57e-3de48d92ab1e');
+    //console.log("repdata=", response.data);
+    reply.send(response.data);
+  }catch(err){
+    app.log.error(err);
+    process.exit(1);
+   //api.js console.error(`Error:${err}`);
+  }
+  
+});
+
+
+
+
+
+/* Run the server!*/
+// app.listen({ port: 8080 }, function (err, address) {
 //   if (err) {
-//     fastify.log.error(err);
+//     app.log.error(err);
 //     process.exit(1);
 //   }
 //   //Server is now listening on ${address}
