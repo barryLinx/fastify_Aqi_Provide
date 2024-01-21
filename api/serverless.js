@@ -51,10 +51,11 @@ fastify.setErrorHandler(function (error, request, reply) {
 
 
 /* Register  your application as a normal plugin.*/
-import Rou from '../api/serverless.js';
-fastify.register(Rou, {
-  prefix: "/",
-});
+fastify.register(import("../api/serverless.js"));
+// import Rou from '../api/serverless.js';
+// fastify.register(Rou, {
+//   prefix: "/",
+// });
 
 
 // Run the server!
