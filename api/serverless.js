@@ -11,13 +11,13 @@ import cors from '@fastify/cors';
 import Fastify from "fastify";
 
 
-const fastify = Fastify({
+const app = Fastify({
   logger: true,
 });
 
 //const cors_Orgin = process.env.VanillaJS_PMAQI || 'http://localhost:8050';
 
-await fastify.register(cors, { 
+await app.register(cors, { 
   // put your options here
   //origin:[cors_Orgin]
    origin:'*'
@@ -25,7 +25,7 @@ await fastify.register(cors, {
 
 
 // rate-limit 流量限制
-await fastify.register(import('@fastify/rate-limit'), {
+await app.register(import('@fastify/rate-limit'), {
   //global : false,          // default true
   max: 3,                 // default 1000
   timeWindow: '1 minute',// default 1000 * 60
@@ -41,7 +41,7 @@ await fastify.register(import('@fastify/rate-limit'), {
   }
 });
 
-fastify.setErrorHandler(function (error, request, reply) {
+app.setErrorHandler(function (error, request, reply) {
   if (error.statusCode === 429) {
     reply.code(429)
     error.message = 'You hit the rate limit! Slow down please!'
@@ -53,9 +53,7 @@ fastify.setErrorHandler(function (error, request, reply) {
 /* Register  your application as a normal plugin.*/
 //fastify.register(import("../api/serverless.js"));
 import routes from '../api/serverless.js';
-fastify.register(routes, {
-  prefix: "/",
-});
+app.register(routes);
 
 
 // Run the server!
@@ -71,8 +69,8 @@ fastify.register(routes, {
 
 
 export default async (req, res) => {
-  await fastify.ready();
-  fastify.server.emit('request', req, res);
+  await app.ready();
+  app.server.emit('request', req, res);
 }
 
 

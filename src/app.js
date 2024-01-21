@@ -1,13 +1,13 @@
 import Axios from 'axios';
 
-async function routes (fastify, options) {
+async function routes (app, options) {
 // Declare a route
 
-fastify.get("/",async function(req,reply){
+app.get("/",async function(req,reply){
   return { hello: 'world' }
 });
 
-fastify.get("/api/aqi", async function (request, reply) {
+app.get("/api/aqi", async function (request, reply) {
   const aqiURL=`${process.env.URL}${process.env.API_KEY}`;
   try{
     let response  = await Axios.get(aqiURL);
@@ -15,7 +15,7 @@ fastify.get("/api/aqi", async function (request, reply) {
     //console.log("repdata=", response.data);
     reply.send(response.data);
   }catch(err){
-    fastify.log.error(err);
+    app.log.error(err);
     process.exit(1);
    //api.js console.error(`Error:${err}`);
   }
