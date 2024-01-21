@@ -6,8 +6,8 @@
   "main": "api.js",
   "scripts": {
     "start": "fastify start ./src/api.js",
-    "dev": "nodemon ./api/serverless.js",
-    "pmdev": "pm2 start ./api/serverless.js --watch"
+    "dev": "nodemon ./src/app.js",
+    "pmdev": "pm2 start ./src/app.js  --watch"
   },
   "keywords": [],
   "author": "",
