@@ -51,9 +51,8 @@ fastify.setErrorHandler(function (error, request, reply) {
 
 
 /* Register  your application as a normal plugin.*/
-import routes from '../src/app';
-
-fastify.register(routes, {
+import Rou from '../api/serverless.js';
+fastify.register(Rou, {
   prefix: "/",
 });
 

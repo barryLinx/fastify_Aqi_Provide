@@ -6,8 +6,8 @@
   "main": "api.js",
   "scripts": {
     "start": "fastify start ./src/api.js",
-    "dev": "nodemon src/api.js",
-    "pmdev": "pm2 start src/api.js --watch"
+    "dev": "nodemon ./api/serverless.js",
+    "pmdev": "pm2 start ./api/serverless.js --watch"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +17,8 @@
     "@fastify/rate-limit": "^9.1.0",
     "axios": "^1.6.5",
     "fastify": "^4.25.2",
-    "fastify-cli": "^6.0.1"
+    "fastify-cli": "^6.0.1",
+    "nodemon": "^3.0.3"
   },
   "devDependencies": {
     "dotenv": "^16.3.1"
