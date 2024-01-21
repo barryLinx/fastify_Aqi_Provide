@@ -7,13 +7,13 @@ import cors from '@fastify/cors';
 // Require the framework
 import Fastify from "fastify";
 
-const app = Fastify({
+const fastify = Fastify({
   logger: true,
 });
 
 //const cors_Orgin = process.env.VanillaJS_PMAQI || 'http://localhost:8050';
 
-await app.register(cors, { 
+await fastify.register(cors, { 
   // put your options here
   //origin:[cors_Orgin]
    origin:'*'
@@ -21,7 +21,7 @@ await app.register(cors, {
 
 
 // rate-limit 流量限制
-await app.register(import('@fastify/rate-limit'), {
+await fastify.register(import('@fastify/rate-limit'), {
   //global : false,          // default true
   max: 3,                 // default 1000
   timeWindow: '1 minute',// default 1000 * 60
@@ -37,7 +37,7 @@ await app.register(import('@fastify/rate-limit'), {
   }
 });
 
-app.setErrorHandler(function (error, request, reply) {
+fastify.setErrorHandler(function (error, request, reply) {
   if (error.statusCode === 429) {
     reply.code(429)
     error.message = 'You hit the rate limit! Slow down please!'
@@ -46,11 +46,11 @@ app.setErrorHandler(function (error, request, reply) {
 })
 
 // Register your application as a normal plugin.
-app.register(import("../src/app"));
+fastify.register(import("../src/app"));
 
 export default async (req, res) => {
-  await app.ready();
-  app.server.emit('request', req, res);
+  await fastify.ready();
+  fastify.server.emit('request', req, res);
 }
 
 
