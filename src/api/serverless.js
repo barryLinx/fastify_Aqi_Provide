@@ -51,16 +51,21 @@ fastify.setErrorHandler(function (error, request, reply) {
 
 
 /* Register  your application as a normal plugin.*/
-fastify.register(import("../src/app.js"));
+import routes from '../api/serverless.js';
+
+fastify.register(routes, {
+  prefix: "/",
+});
+
 
 // Run the server!
-fastify.listen({ port: 8080 }, function (err, address) {
-  if (err) {
-    fastify.log.error(err);
-    process.exit(1);
-  }
-  //Server is now listening on ${address}
-});
+// fastify.listen({ port: 8080 }, function (err, address) {
+//   if (err) {
+//     fastify.log.error(err);
+//     process.exit(1);
+//   }
+//   //Server is now listening on ${address}
+// });
 
 
 
