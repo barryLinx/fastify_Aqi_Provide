@@ -4,7 +4,7 @@ import Axios from 'axios';
 
 // Declare a route
 
-export default async function routes(fastify,options){
+async function routes(fastify,options){
 
   fastify.get("/",async function(req,reply){
     reply.send({ hello: 'world' });
@@ -32,7 +32,7 @@ export default async function routes(fastify,options){
   });
 }
 
-
+export default routes;
 
 
 
