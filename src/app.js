@@ -1,6 +1,4 @@
 
-import Axios from 'axios';
-
 
 // Declare a route
 

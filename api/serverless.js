@@ -3,16 +3,17 @@
 // Read the .env file.
 import * as dotenv from "dotenv";
 dotenv.config();
-import cors from '@fastify/cors';
-// Require the framework
+
 import FastifyImp from "fastify";
 
+import Axios from 'axios';
 const app = FastifyImp({
   logger: true,
 });
 
 //const cors_Orgin = process.env.VanillaJS_PMAQI || 'http://localhost:8050';
-
+import cors from '@fastify/cors';
+// Require the framework
 await app.register(cors, { 
   // put your options here
   //origin:[cors_Orgin]
