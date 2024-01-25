@@ -66,7 +66,7 @@ app.get("/api/aqi", async function (request, reply) {
   try{
     let response  = await Axios.get(aqiURL);
     //let response  = await fetch('https://data.moenv.gov.tw/api/v2/aqx_p_432?api_key=4684ccb2-ffa1-4d65-b57e-3de48d92ab1e');
-    console.log("repdata=", response.data);
+    //console.log("repdata=", response.data);
     reply.send(response.data);
   }catch(err){
     app.log.error(err);
