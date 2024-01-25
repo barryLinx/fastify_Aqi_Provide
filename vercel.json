@@ -1,15 +1,19 @@
 {
+  "version": 2,
   "rewrites": [
-      {
-          "source": "/(.*)",
-          "destination": "/api/serverless.js"
-      }
+    {
+      "source": "/(.*)",
+      "destination": "/api/serverless.js"
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "http://localhost:8050" }
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": ["http://localhost:8050","http://127.0.0.1:5500"]
+        }
       ]
     }
   ]
