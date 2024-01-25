@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node start ./src/app.js",
     "dev": "nodemon ./src/app.js",
-    "pmdev": "pm2 start ./src/app.js  --watch"
+    "pmdev": "pm2 start ./api/serverless.js  --watch"
   },
   "keywords": [],
   "author": "",

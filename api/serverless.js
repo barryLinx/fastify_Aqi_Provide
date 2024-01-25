@@ -6,7 +6,7 @@ dotenv.config();
 
 import FastifyImp from "fastify";
 
-// import Axios from 'axios';
+import Axios from 'axios';
 const app = FastifyImp({
   logger: true,
 });
@@ -66,7 +66,7 @@ app.get("/api/aqi", async function (request, reply) {
   try{
     let response  = await Axios.get(aqiURL);
     //let response  = await fetch('https://data.moenv.gov.tw/api/v2/aqx_p_432?api_key=4684ccb2-ffa1-4d65-b57e-3de48d92ab1e');
-    //console.log("repdata=", response.data);
+    console.log("repdata=", response.data);
     reply.send(response.data);
   }catch(err){
     app.log.error(err);
@@ -81,6 +81,15 @@ app.get("/api/aqi", async function (request, reply) {
 
 // Register your application as a normal plugin.
 // app.register(import("../src/app"));
+
+/* Run the server!*/
+app.listen({ port: 8080 }, function (err, address) {
+  if (err) {
+    app.log.error(err);
+    process.exit(1);
+  }
+  //Server is now listening on ${address}
+});
 
 export default async (req, res) => {
   await app.ready();
