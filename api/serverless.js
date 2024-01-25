@@ -24,7 +24,7 @@ await app.register(cors, {
 // rate-limit 流量限制
 await app.register(import('@fastify/rate-limit'), {
   //global : false,          // default true
-  max: 3,                 // default 1000
+  max: 10,                 // default 1000
   timeWindow: '1 minute',// default 1000 * 60
   //allowList:[cors_Orgin],
   errorResponseBuilder: function (request, context) {
