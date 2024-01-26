@@ -5,8 +5,8 @@
   "type": "module",
   "main": "api.js",
   "scripts": {
-    "start": "node start ./src/app.js",
-    "dev": "nodemon ./src/app.js",
+    "start": "node start ./api/serverless.js",
+    "dev": "nodemon ./api/serverless.js",
     "pmdev": "pm2 start ./api/serverless.js  --watch"
   },
   "keywords": [],
