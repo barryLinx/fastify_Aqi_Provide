@@ -11,13 +11,13 @@ const app = FastifyImp({
   logger: true,
 });
 
-//const cors_Orgin = process.env.VanillaJS_PMAQI || 'http://localhost:8050';
+const cors_Orgin = process.env.VanillaJS_PMAQI || 'http://localhost:8050';
 import cors from '@fastify/cors';
 // Require the framework
 await app.register(cors, { 
   // put your options here
-  //origin:[cors_Orgin]
-   origin:['http://127.0.0.1:5500']
+  origin:[cors_Orgin]
+  
 });
 
 
