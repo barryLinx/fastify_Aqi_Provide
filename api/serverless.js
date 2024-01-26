@@ -17,7 +17,7 @@ import cors from '@fastify/cors';
 await app.register(cors, { 
   // put your options here
   //origin:[cors_Orgin]
-   origin:['http://localhost:8050/main.html','http://127.0.0.1:5500']
+   origin:['http://127.0.0.1:5500']
 });
 
 
@@ -51,15 +51,15 @@ app.setErrorHandler(function (error, request, reply) {
 
 
 
-app.get("/",async function(req,reply){
-  reply.send({ hello: 'world' });
-  //return { hello: 'world' }
-});
+// app.get("/",async function(req,reply){
+//   reply.send({ hello: 'world' });
+//   //return { hello: 'world' }
+// });
 
-app.get("/hi",async function(req,reply){
-  reply.send({  hi: "AQI"  });
-  //return { hello: 'world' }
-});
+// app.get("/hi",async function(req,reply){
+//   reply.send({  hi: "AQI"  });
+//   //return { hello: 'world' }
+// });
 
 app.get("/api/aqi", async function (request, reply) {
   const aqiURL=`${process.env.URL}${process.env.API_KEY}`;
