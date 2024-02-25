@@ -16,8 +16,8 @@ import cors from '@fastify/cors';
 // Require the framework
 await app.register(cors, { 
   // put your options here
-  //origin:[cors_Orgin,'http://localhost:8050/'],
-  origin:'*'
+  origin:[cors_Orgin,'http://localhost:8050/'],
+ // origin:'*'
   
 });
 
