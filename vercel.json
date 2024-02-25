@@ -1,8 +1,27 @@
-  {
-    "rewrites": [
-      {
-        "source": "/(.*)",
-        "destination": "/api/serverless.js"       
-      }
-    ]
-  }
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/serverless.js"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "https://barrylinx.github.io"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Origin, X-Requested-With, Content-Type, Accept"
+        }
+      ]
+    }
+  ]
+}
