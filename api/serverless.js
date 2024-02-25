@@ -62,6 +62,7 @@ app.setErrorHandler(function (error, request, reply) {
 // });
 
 app.get("/api/aqi", async function (request, reply) {
+  
   const aqiURL=`${process.env.URL}${process.env.API_KEY}`;
   try{
     let response  = await Axios.get(aqiURL);
