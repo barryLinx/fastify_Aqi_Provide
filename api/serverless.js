@@ -16,7 +16,7 @@ import cors from '@fastify/cors';
 // Require the framework
 await app.register(cors, { 
   // put your options here
-  origin:[cors_Orgin]
+  origin:[cors_Orgin,'http://localhost:8050/']
   
 });
 
@@ -62,7 +62,7 @@ app.setErrorHandler(function (error, request, reply) {
 // });
 
 app.get("/api/aqi", async function (request, reply) {
-  
+
   const aqiURL=`${process.env.URL}${process.env.API_KEY}`;
   try{
     let response  = await Axios.get(aqiURL);
