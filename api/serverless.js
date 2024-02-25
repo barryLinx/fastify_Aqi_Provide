@@ -85,13 +85,13 @@ app.get("/api/aqi", async function (request, reply) {
 // app.register(import("../src/app"));
 
 /* Run the server!*/
-app.listen({ port: 8080 }, function (err, address) {
-  if (err) {
-    app.log.error(err);
-    process.exit(1);
-  }
-  //Server is now listening on ${address}
-});
+// app.listen({ port: 8080 }, function (err, address) {
+//   if (err) {
+//     app.log.error(err);
+//     process.exit(1);
+//   }
+//   //Server is now listening on ${address}
+// });
 
 export default async (req, res) => {
   await app.ready();
