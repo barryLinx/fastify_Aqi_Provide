@@ -11,12 +11,12 @@ const app = FastifyImp({
   logger: true,
 });
 
-const cors_Orgin = process.env.VanillaJS_PMAQI;
+//const cors_Orgin = process.env.VanillaJS_PMAQI;
 import cors from '@fastify/cors';
 /**Require the framework*/
 await app.register(cors, { 
   // put your options here
-  origin:[cors_Orgin,'http://localhost:8050/'],
+  origin:['https://barrylinx.github.io','http://localhost:8050/'],
  // origin:'*'
   
 });
