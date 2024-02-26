@@ -16,7 +16,7 @@ import cors from '@fastify/cors';
 /**Require the framework*/
 await app.register(cors, { 
   // put your options here
-  origin:['https://barrylinx.github.io','http://localhost:8050/'],
+  origin:['https://barrylinx.github.io','http://localhost:8050'],
  // origin:'*'
   
 });
