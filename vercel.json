@@ -1,22 +1,7 @@
 {
-  "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "api/serverless.js",
-      "use": "@vercel/node"
+      "source": "/api/(.*)",
+      "destination": "/api/serverless.js"
     }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/serverless.js",
-      "methods": ["GET", "POST", "OPTIONS"],
-      "headers": {
-        "Access-Control-Allow-Origin": "https://barrylinx.github.io",
-        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-        "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept, Origin"
-      }
-    }
-  ]
-}
-
+  ]}
