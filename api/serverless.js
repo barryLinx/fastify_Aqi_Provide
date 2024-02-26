@@ -11,15 +11,15 @@ const app = FastifyImp({
   logger: true,
 });
 
-const cors_Orgin = process.env.VanillaJS_PMAQI;
-import cors from '@fastify/cors';
+//const cors_Orgin = process.env.VanillaJS_PMAQI;
+//import cors from '@fastify/cors';
 // Require the framework
-await app.register(cors, { 
-  // put your options here
-  origin:[cors_Orgin],
- // origin:'*'
+// await app.register(cors, { 
+//   // put your options here
+//   origin:[cors_Orgin],
+//  // origin:'*'
   
-});
+// });
 
 
 // rate-limit 流量限制
